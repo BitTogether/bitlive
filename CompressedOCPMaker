@@ -1,0 +1,58 @@
+<!DOCTYPE html><html><head><title>Bitlive! Maker</title><script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><style>body{font-family:Arial,sans-serif;background-color:#111;margin:0;padding:0;color:#eee}.container{max-width:800px;margin:0 auto;padding:20px;background-color:#222;box-shadow:0 0 10px rgba(0,0,0,.5);border-radius:10px}h1,h2{margin-bottom:10px;color:#ff8c00}label{display:block;font-weight:700;margin-top:10px}input[type=text],textarea{width:100%;padding:10px;margin-bottom:10px;border:1px solid #555;border-radius:5px;background-color:#333;color:#eee}input[type=text][readonly]{background-color:#444;color:#aaa}textarea{width:100%;padding:10px;border:1px solid #555;border-radius:5px;background-color:#333;color:#eee;resize:vertical}button{background-color:#ff8c00;color:#fff;border:none;padding:8px 16px;cursor:pointer;border-radius:5px;font-weight:700;margin-right:10px}button:hover{background-color:#e56700}#outputBox{width:100%;padding:10px;border:1px solid #555;border-radius:5px;font-size:14px;line-height:1.5;background-color:#333;color:#eee;resize:vertical}</style></head><body><div class="container"><h1>Bitlive! Maker</h1><h2>AES 256 CBC</h2><label>Encryption Key (up to 32 characters):</label><input type="text" id="keyInput" value="" placeholder="Enter encryption key"><button onclick="generateKey()">Random Key</button><br><label>Plaintext:</label><input type="text" id="plaintextInput" value="Bitlive!" readonly="readonly"><br><label>IV:</label><input type="text" id="ivInput" placeholder="Enter your IV"><button onclick="generateIV()">Random IV</button><br><label>Channel Link:</label><input type="text" id="linkInput" placeholder="Enter your channel link"><br><button onclick="encrypt()">Encrypt</button><label>Output: Paste into any inscription</label><textarea rows="3" readonly="readonly" id="outputBox"></textarea><button id="copyButton">Copy Output to Clipboard</button></div><script>function generateKey() {
+            const randomKey = Array.from({ length: 32 }, () => Math.floor(Math.random() * 256).toString(16).padStart(2, '0')).join('');
+            document.getElementById("keyInput").value = randomKey.substring(0, 32);
+        }
+
+        function generateIV() {
+            const randomIV = Array.from({ length: 16 }, () => Math.floor(Math.random() * 256).toString(16).padStart(2, '0')).join('');
+            document.getElementById("ivInput").value = randomIV;
+        }
+
+        function encrypt() {
+            const key = document.getElementById("keyInput").value;
+            const plaintext = document.getElementById("plaintextInput").value;
+            const iv = document.getElementById("ivInput").value;
+            const link = document.getElementById("linkInput").value;
+
+            // Check if the key is of valid length
+            if (key.length > 32) {
+                alert("Key length must be up to 32 characters.");
+                return;
+            }
+
+            // Pad the key with trailing zeros to reach 32 characters
+            const paddedKey = key.padEnd(32, '0');
+
+            // Convert the padded key to a WordArray
+            const keyWordArray = CryptoJS.enc.Utf8.parse(paddedKey);
+
+            // If IV is not provided, use default "0" IV
+            const ivValue = iv ? iv : '0';
+            const ivWordArray = CryptoJS.enc.Hex.parse(ivValue);
+
+            // Encrypt the plaintext using AES 256 CBC mode with CryptoJS
+            const ciphertext = CryptoJS.AES.encrypt(plaintext, keyWordArray, {
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7,
+                iv: ivWordArray
+            });
+
+            // Populate output lines
+            const outputBox = document.getElementById("outputBox");
+            outputBox.value = `Bitcoin is Dead\n${ciphertext.toString()}\n${link}`;
+        }
+
+        // Clipboard.js setup
+        const copyButton = new ClipboardJS("#copyButton", {
+            text: function() {
+                return document.getElementById("outputBox").value;
+            }
+        });
+        
+        copyButton.on("success", function(e) {
+            alert("Copied to clipboard:\n" + e.text);
+        });
+
+        copyButton.on("error", function(e) {
+            alert("Failed to copy to clipboard.");
+        });</script></body></html>
