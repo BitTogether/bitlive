@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Bitlive! Maker</title>
+    <meta charset="UTF-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
     <style>
@@ -84,18 +85,22 @@
             color: #eee;
             resize: vertical;
         }
-</style>
+
+        #languageSelect {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Bitlive! Maker</h1>
         <h2>AES 256 CBC</h2>
+        <label>Plaintext:</label>
+        <input type="text" id="plaintextInput" value="Bitlive!" readonly>
+        <br>
         <label>Encryption Key (up to 32 characters):</label>
         <input type="text" id="keyInput" value="" placeholder="Enter encryption key">
         <button onclick="generateKey()">Random Key</button>
-        <br>
-        <label>Plaintext:</label>
-        <input type="text" id="plaintextInput" value="Bitlive!" readonly>
         <br>
         <label>IV:</label>
         <input type="text" id="ivInput" placeholder="Enter your IV">
@@ -105,6 +110,48 @@
         <input type="text" id="linkInput" placeholder="Enter your channel link">
         <br>
         <button onclick="encrypt()">Encrypt</button>
+        
+        <!-- Language Selection -->
+        <label for="languageSelect">Select Language:</label>
+        <select id="languageSelect" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="sv">Svenska</option>
+            <option value="it">Italiano</option>
+            <option value="fil">Filipino</option>
+            <option value="de">Deutsch</option>
+            <option value="haw">Hawaiian</option>
+            <option value="ig">Igbo</option>
+            <option value="ja">日本語</option>
+            <option value="zh-TW">中文 (繁體)</option>
+            <option value="zh-CN">中文 (简体)</option>
+            <option value="hi">हिन्दी</option>
+            <option value="ru">Русский</option>
+            <option value="pt">Português</option>
+            <option value="ar">عربى</option>
+            <option value="ko">한국어</option>
+            <option value="tr">Türkçe</option>
+            <option value="nl">Nederlands</option>
+            <option value="pl">Polski</option>
+            <option value="sw">Kiswahili</option>
+            <option value="th">ไทย</option>
+            <option value="el">Ελληνικά</option>
+            <option value="vi">Tiếng Việt</option>
+            <option value="ro">Română</option>
+            <option value="uk">Українська</option>
+            <option value="hu">Magyar</option>
+            <option value="cs">Čeština</option>
+            <option value="bn">বাংলা</option>
+            <option value="id">Bahasa Indonesia</option>
+            <option value="fi">Suomi</option>
+            <option value="da">Dansk</option>
+            <option value="no">Norsk</option>
+            <option value="ms">Bahasa Melayu</option>
+            <option value="he">עִברִית</option>
+            <option value="bg">Български</option>
+            <!-- Add more language options as needed -->
+        </select>
         
         <!-- Output lines -->
         <label>Output: Paste into any inscription</label>
@@ -154,9 +201,57 @@
                 iv: ivWordArray
             });
 
+            // Get selected language from the dropdown
+            const languageSelect = document.getElementById("languageSelect");
+            const selectedLanguage = languageSelect.value;
+
+            // Define phrases for each language
+            const languagePhrases = {
+                en: "Live on Bitcoin",
+                es: "Bitcoin en vivo",
+                fr: "en direct sur Bitcoin",
+                sv: "sänds live på Bitcoin",
+                it: "in diretta su Bitcoin",
+                fil: "Live sa Bitcoin",
+                de: "Live auf Bitcoin",
+                haw: "Ola ma ka Bitcoin",
+                ig: "Gụọ n'ụzọ Bitcoin",
+                ja: "リアルタイムでビットコイン",
+                "zh-TW": "實況比特幣",
+                "zh-CN": "实况比特币",
+                hi: "बिटकॉइन पर लाइव",
+                ru: "Прямая трансляция о Биткоине",
+                pt: "Ao vivo com Bitcoin",
+                ar: "بث مباشر حول البيتكوين",
+                ko: "실시간 비트코인 방송",
+                tr: "Canlı Bitcoin Yayını",
+                nl: "Live uitzending over Bitcoin",
+                pl: "Na żywo na temat Bitcoina",
+                sw: "Mubashara juu ya Bitcoin",
+                th: "ถ่ายทอดสดเกี่ยวกับบิทคอยน์",
+                el: "Ζωντανή μετάδοση για το Bitcoin",
+                vi: "Trực tiếp về Bitcoin",
+                ro: "Live despre Bitcoin",
+                uk: "Пряма трансляція про Bitcoin",
+                hu: "Élő adás a Bitcoinról",
+                cs: "Živě o Bitcoinu",
+                bn: "বিটকয়েন লাইভ",
+                id: "Langsung tentang Bitcoin",
+                fi: "Suora lähetys Bitcoinista",
+                da: "Live om Bitcoin",
+                no: "Direktesendt om Bitcoin",
+                ms: "Langsung mengenai Bitcoin",
+                he: "שידור חי על ביטקוין",
+                bg: "На живо за Биткойн",
+                // Add more language phrases here
+            };
+
+            // Use the selected language to get the corresponding phrase
+            const selectedPhrase = languagePhrases[selectedLanguage];
+
             // Populate output lines
             const outputBox = document.getElementById("outputBox");
-            outputBox.value = `Bitcoin is Dead\n${ciphertext.toString()}\n${link}`;
+            outputBox.value = `${selectedPhrase}\n${ciphertext.toString()}\n${link}`;
         }
 
         // Clipboard.js setup
@@ -173,6 +268,11 @@
         copyButton.on("error", function(e) {
             alert("Failed to copy to clipboard.");
         });
+        
+        // Change language function
+        function changeLanguage() {
+            encrypt();
+        }
     </script>
 </body>
 </html>
