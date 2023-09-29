@@ -33,5 +33,7 @@ import binascii
 # LINKS
 
 Channel Maker:  https://bitliveprototype.tiiny.site/
+
 Our site:  http://bitlive.live
+
 Twitter (DM us for anything!):  https://twitter.com/LiveOnBitcoin
