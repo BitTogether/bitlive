@@ -7,7 +7,7 @@ DM us for assistance in getting your channel on bitcoin: http://www.x.com/@liveo
 
 Once your channel is created, our indexer can detect your channel on the bitcoin blockchain so they can be updated on our website bitlive.live or made available to any person using the Bitlive! indexer.  We monitor your link for you to go live or post new content.  Our goal is to grow the indexer into a dapp that lets people enjoy their favorite creators directly without interference from censors or platforms by leveraging the decentralized nature of bitcoin.  
 
-#Bitlive Channels
+# Bitlive Channels and the Live on Bitcoin Protocol
 
 Bitlive channels consist of 3 lines:
 
@@ -17,7 +17,7 @@ Bitlive channels consist of 3 lines:
 
 3.  Your Channel Here!  Put a link to your current live, video, or podcast platform here to be broadcast to the world on bitcoin.  This is VERY public and cannot be removed once inscribed, reinscription allows you to change this link but does not remove previous entries.
 
-#The Indexer
+# The Bitlive! Indexer
 
 To use or test the python indexer: install python on windows with a bitcoin core full node and point the -datadir= to the place your copy of the blockchain is stored and the path to your cli client.  You do not need ord to use the indexer to find the ordinals.  Tested on the latest bitcoin core (version 25 at writing).  Bitlive's indexer starts at block 803953 and does not run at a high speed, the indexer is meant to be run continuously looking for new channels as new blocks come in every ~10 minutes. Continuous mode is disabled in this windows release.  Pip can probably help you find the following python dependencies is necessary:
 
@@ -28,3 +28,10 @@ import threading
 import os
 import time
 import binascii
+
+
+# LINKS
+
+Channel Maker:  https://bitliveprototype.tiiny.site/
+Our site:  http://bitlive.live
+Twitter (DM us for anything!):  https://twitter.com/LiveOnBitcoin
