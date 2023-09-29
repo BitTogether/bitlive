@@ -1,7 +1,7 @@
 # bitlive
 Thank you for checking out Bitlive!, you may inscribe your main channel link on bitcoin using this tool for less than $3 worth of bitcoin: https://bitliveprototype.tiiny.site/.  
 
-Bitlive's protocol is platform agnostic: creators on platforms like youtube, twitch, twitter spaces, kick, or any other platform you might currently be using to reach a live audience or post video content.  If you ever move, you can reinscribe your ordinal and your audience can use bitcoin to follow along and continue supporting creators with bitcoin in the event of platform demonetization.
+Bitlive's protocol is platform agnostic: creators on platforms like youtube, twitch, twitter spaces, kick, or any other platform you might currently be using to reach a live audience or post video content.  If you ever move to a different platform, you can reinscribe your ordinal and your audience can use bitcoin to follow you to your new platform and continue being supported with bitcoin in the event of platform demonetization.
 
 DM us for assistance in getting your channel on bitcoin: http://www.x.com/@liveonbitcoin or @onchainfossils on twitter. We'd love to help you get your channel on bitcoin or you may use the channel maker tool above to create your Bitlive channel ordinal as a text inscription using any inscription service.
 
