@@ -82,6 +82,11 @@ def search_blocks(progress_bar):
                                 hits_in_block.append((term, block_hash))
                                 searched_blocks.append(block_height)
 
+                                # Save block content in a separate file
+                                content_filename = os.path.join(folder_name, f"{block_height}_content.txt")
+                                with open(content_filename, 'w', encoding='utf-8') as content_file:
+                                    content_file.write(block_info)
+
                     result_text.insert(tk.END, f"Block Height: {block_height}, Hits Found: {len(hits_in_block)}\n")
 
                     if hits_in_block:
@@ -250,3 +255,4 @@ start_button = tk.Button(root, text="Start Search", command=start_search)
 start_button.pack()
 
 root.mainloop()
+
