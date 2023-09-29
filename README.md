@@ -5,7 +5,7 @@ Bitlive's protocol is platform agnostic: creators on platforms like youtube, twi
 
 DM us for assistance in getting your channel on bitcoin: http://www.x.com/@liveonbitcoin or @onchainfossils on twitter. We'd love to help you get your channel on bitcoin or you may use the channel maker tool above to create your Bitlive channel ordinal as a text inscription using any inscription service.
 
-Once your channel is created, our indexer can detect the channel on the bitcoin blockchain for free so they can be updated on our website bitlive.live or made available to any person using the Bitlive! indexer or dapp.  We monitor your link for you to go live or post new content so your live performances can begin as soon as inspiration strikes.  Our goal is to grow the indexer into a dapp that lets people enjoy their favorite creators directly without interference from censors or platforms by leveraging the decentralized nature of bitcoin.  
+Once your channel is created, our indexer detects the channel on the bitcoin blockchain so users can see your channel on our website bitlive.live or made available to any person using the Bitlive! indexer or dapp.  We monitor your link for you to go live or post new content so your live performances can begin as soon as inspiration strikes.  Our goal is to grow the indexer into a dapp that lets people enjoy their favorite creators directly without interference from censors or platforms by leveraging the decentralized nature of bitcoin.  
 
 # Bitlive Channels and the Live on Bitcoin Protocol
 
